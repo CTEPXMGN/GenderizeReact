@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Button from './components/UI/button'
+import Button from './components/UI/button/button'
 import Input from './components/UI/input'
 import Output from './components/UI/output'
 import {serverURL, getGender, minSymbols} from './components/UI/request'
@@ -12,6 +12,7 @@ class Main extends React.Component {
     super(props);
     this.state = {
       inputValue: "",
+      name: "",
       gender: "",
       message: "",
       isCorrect: false,
@@ -28,23 +29,22 @@ class Main extends React.Component {
     event.preventDefault();
 
     if (this.state.inputValue.length <= minSymbols) {
-      this.setState({message: "Is too small name"});
+      this.setState({message: "The name is too small"});
     } else {
       getGender(`${serverURL}?name=${this.state.inputValue}`)
       .then((result) => {
-        this.setState({gender: result.gender, isCorrect: true})
+        this.setState({name: result.name, gender: result.gender, isCorrect: true})
       })
-      // .then(alert(this.state.inputValue + 'is' + result.gender))
-      // this.setState({inputValue: ""})
+      this.setState({inputValue: ""})
     }
   }
 
   render() {
     let outMessage;
     if (this.state.isCorrect) {
-      outMessage = <Output name={this.state.inputValue} value={this.state.gender} />
+      outMessage = <Output name={this.state.name + ' is'} value={this.state.gender} />
     } else {
-      outMessage = <Output name={this.state.inputValue} value={this.state.message} />
+      outMessage = <Output value={this.state.message} />
     }
 
     return (

@@ -4,7 +4,6 @@ const serverURL = 'https://api.genderize.io';
 const minSymbols = 2;
 
 async function getGender(url){
-    // const url = `${url}?name=${firstName.value}`;
     try {
         let response = await fetch(url);
         console.log('Пошёл запрос...');
@@ -13,7 +12,6 @@ async function getGender(url){
         } else {
             console.log('Запрос вернулся...');
             return response.json();
-            
         }
     }
     catch(err) {

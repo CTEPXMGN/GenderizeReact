@@ -13,7 +13,8 @@ class Main extends React.Component {
     this.state = {
       inputValue: "",
       gender: "",
-      message: ""
+      message: "",
+      isCorrect: false,
     };
     this.handleValueChange = this.handleValueChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +32,7 @@ class Main extends React.Component {
     } else {
       getGender(`${serverURL}?name=${this.state.inputValue}`)
       .then((result) => {
-        this.setState({gender: result.gender})
+        this.setState({gender: result.gender, isCorrect: true})
       })
       // .then(alert(this.state.inputValue + 'is' + result.gender))
       // this.setState({inputValue: ""})
@@ -39,13 +40,20 @@ class Main extends React.Component {
   }
 
   render() {
+    let outMessage;
+    if (this.state.isCorrect) {
+      outMessage = <Output name={this.state.inputValue} value={this.state.gender} />
+    } else {
+      outMessage = <Output name={this.state.inputValue} value={this.state.message} />
+    }
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <Input onChange={this.handleValueChange} value={this.state.value} />
           <Button value={'Submit'} />
         </form>
-        <Output name={this.state.inputValue} value={this.state.gender}/>
+        {outMessage}
       </div>
 
     )

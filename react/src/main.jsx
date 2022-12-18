@@ -4,6 +4,7 @@ import Button from './components/UI/button/button'
 import Input from './components/UI/input/input'
 import Output from './components/UI/output'
 import {serverURL, getGender, minSymbols} from './components/UI/request'
+import "./main.css"
 // import App from './App'
 // import './index.css'
 
@@ -48,7 +49,7 @@ class Main extends React.Component {
     }
 
     return (
-      <div>
+      <div className='wrapper'>
         <form onSubmit={this.handleSubmit}>
           <Input onChange={this.handleValueChange} value={this.state.value} />
           <Button value={'Submit'} />

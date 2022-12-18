@@ -43,7 +43,7 @@ class Main extends React.Component {
   render() {
     let outMessage;
     if (this.state.isCorrect) {
-      outMessage = <Output name={this.state.name + ' is'} value={this.state.gender} />
+      outMessage = <Output name={this.state.name + ' is '} value={this.state.gender} />
     } else {
       outMessage = <Output value={this.state.message} />
     }

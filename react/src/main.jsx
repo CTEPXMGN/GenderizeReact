@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Button from './components/UI/button/button'
-import Input from './components/UI/input'
+import Input from './components/UI/input/input'
 import Output from './components/UI/output'
 import {serverURL, getGender, minSymbols} from './components/UI/request'
 // import App from './App'

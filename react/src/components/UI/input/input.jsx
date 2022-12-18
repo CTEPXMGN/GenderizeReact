@@ -1,14 +1,10 @@
 import React from 'react'
+import "./input.css"
 
 export default class Input extends React.Component {
   constructor(props) {
     super(props);
   }
-
-  // handleInput(e) {
-  //   e.preventDefault();
-  //   console.log(e.target.value);
-  // }
 
     render() {
       return (
@@ -16,7 +12,6 @@ export default class Input extends React.Component {
         className='name' 
         type="text" 
         placeholder='Input name...'
-
         onChange={this.props.onChange} />
       )
     }
